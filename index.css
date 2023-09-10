@@ -62,8 +62,26 @@ ul li {
     flex-grow: 1;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: relative; 
+    overflow: hidden; /* Add this to hide the overflow of the line */
 }
 ul li:hover { 
     background-color: #a2885f;
     scale: 1.1;
+}
+ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%; /* Center the line vertically within the li */
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #a94c47;
+    transition: width 0.3s ease-in-out;
+    transform: translateY(-50%); /* Adjust to center the line vertically */
+}
+ul li.clicked::before {
+    
+    width: 100%;
 }

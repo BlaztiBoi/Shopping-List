@@ -57,11 +57,23 @@ function appendItemtoShoppingListEl(item){
     
     newEl.textContent = itemValue
 
-      // Challenge: Attach an event listener to newEl and make it so you console log the id of the item when it's pressed.
     newEl.addEventListener("click" , function(){
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-        remove(exactLocationOfItemInDB)
-        // Challenge: Use the remove function to remove the item from the database
+        newEl.style.backgroundColor = "#a94c47"
+
+        newEl.classList.add("clicked");
+        
+        setTimeout(() => {
+            newEl.style.scale = 0.1     
+            setTimeout(() => {
+                remove(exactLocationOfItemInDB)   
+            }, 100);
+           
+        }, 300)
+
+        
+       
+      
     })
     shoppingList.append(newEl)
 }
