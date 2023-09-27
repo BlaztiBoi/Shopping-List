@@ -13,7 +13,7 @@ html, body {
     margin: 30px auto;
 }
 
-img {
+.main-img {
     width: 150px;
     margin: 0 auto;
     border-radius: 10px;
@@ -30,7 +30,7 @@ input {
     margin: 10px 0;
 }
 
-button {
+#add-button {
     color: #FDFDFD;
     background-color: #956b3a;
     border: 0;
@@ -40,11 +40,11 @@ button {
     text-align: center;
     transition: all 0.2 ease;
 }
-button:hover{
+#add-button:hover{
     cursor: pointer;
     background-color: #bb8648;
 }
-ul {
+#shopping-list {
     padding: 0;
     list-style: none;
     display: flex;
@@ -52,7 +52,7 @@ ul {
     gap: 10px;
 }
 
-ul li { 
+#shopping-list li { 
     font-size: 15px;
     padding: 10px;
     background-color: #FFFDF8;
@@ -65,11 +65,11 @@ ul li {
     position: relative; 
     overflow: hidden; /* Add this to hide the overflow of the line */
 }
-ul li:hover { 
+#shopping-list li:hover { 
     background-color: #a2885f;
     scale: 1.1;
 }
-ul li::before {
+#shopping-list li::before {
     content: "";
     position: absolute;
     left: 0;
@@ -77,11 +77,77 @@ ul li::before {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #a94c47;
+    background-color: #860700;
     transition: width 0.3s ease-in-out;
     transform: translateY(-50%); /* Adjust to center the line vertically */
 }
-ul li.clicked::before {
+#shopping-list li.clicked::before {
     
     width: 100%;
 }
+
+#main-menu {
+    position: fixed;
+    left: -250px; /* Initially hidden on the left side */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #412f19;
+    color: #fff;
+    transition: left 0.3s ease; /* Slide-in transition */
+  }
+  
+  #main-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #main-menu li {
+    padding: 10px;
+    text-align: center;
+
+  }
+  #main-menu li[class=profile] {
+    bottom: 0;
+  }
+  #main-menu a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  #main-menu a:hover {
+    color: #c9b586;
+    text-decoration: underline;
+  }
+  
+  /* Button styles */
+  #mobile-menu-button {
+    display: none; /* Initially hidden on desktop */
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* Show button and slide-in menu on mobile */
+    #main-menu {
+      left: 0;
+      display: none;
+    }
+  
+    #mobile-menu-button {
+      display: inline-block;
+      position: fixed;
+      right: 0; 
+      bottom: 0;
+      margin-bottom: 100px;
+      margin-right: 50px;
+
+    }
+    #mobile-menu-button svg {
+        padding: 10px ;
+        border-radius: 45%;
+        background-color:  #956b3a;
+      }
+  }
+  @media (min-width: 720px) {
+    #main-menu {
+        left: 0;
+      }
+  }

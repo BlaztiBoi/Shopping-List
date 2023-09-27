@@ -22,12 +22,25 @@
 
 <body>
     <div class="container">
-        <img src="assets/dog.png">
+        <img class="main-img" src="assets/dog.png">
         <input type="text" id="input-field" placeholder="Bread">
         <button id="add-button" accesskey="e">Add to cart</button>
         <ul id="shopping-list">
             Loading...
         </ul>
+    </div>
+    <div>
+        <a id="mobile-menu-button" href="#">
+            <svg id="menu-icon" width="45" height="45">
+                <image href="assets/burger.svg" width="45" height="45" />
+            </svg></button>
+        <nav id="main-menu">
+            <ul>
+                <li><a href="#">Bought Items</a></li>
+                <li class="profile"><a href="#">Profile</a></li>
+             
+            </ul>
+        </nav>
     </div>
     <script src="index.js" type="module"></script>
 </body>

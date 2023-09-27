@@ -12,7 +12,7 @@ const shoppingListInDB = ref(database, "shoppingList")
 const shoppingList = document.getElementById("shopping-list")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
-
+const boughtList = ref(database, "boughtList")
 inputFieldEl.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -62,11 +62,12 @@ function appendItemtoShoppingListEl(item){
         newEl.style.backgroundColor = "#a94c47"
 
         newEl.classList.add("clicked");
-        
+        push(boughtList, newEl.textContent)
         setTimeout(() => {
             newEl.style.scale = 0.1     
             setTimeout(() => {
                 remove(exactLocationOfItemInDB)   
+
             }, 100);
            
         }, 300)
@@ -78,3 +79,19 @@ function appendItemtoShoppingListEl(item){
     shoppingList.append(newEl)
 }
 
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mainMenu = document.getElementById('main-menu');
+const menuIcon = document.getElementById('menu-icon');
+const burgerIcon = "assets/burger.svg"
+const crossIcon = "assets/cross.svg"
+
+mobileMenuButton.addEventListener('click', () => {
+  mainMenu.style.left = mainMenu.style.left === '0px' ? '-250px' : '0px';
+  mainMenu.style.display = 'block';
+  if (menuIcon.children[0].href.baseVal == 'assets/burger.svg'){
+    menuIcon.innerHTML = `<image href="${crossIcon}" width="45" height="45" />` 
+    
+  
+  }else menuIcon.innerHTML = `<image href="${burgerIcon}" width="45" height="45" />`   
+ 
+});
